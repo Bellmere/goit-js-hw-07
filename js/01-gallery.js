@@ -4,14 +4,33 @@ import { galleryItems } from './gallery-items.js';
 console.log(galleryItems);
 
 const galleryEl = document.querySelector('.gallery');
-const divEl = document.createElement('div').classList.add('gallery__item');
-const linkEl = document.createElement('a').classList.add('gallery__link');
-let imgEl = document.createElement('img').classList.add('gallery__image');
+const arr = [];
 
 
-const newGallery = galleryItems.map(item => {
-    imgEl = `<img src=${item.preview} alt=${item.description} data-source=${item.original}></img>`;
-    galleryEl.append(divEl).append(linkEl).append(imgEl);
-}).join('');
+galleryItems.forEach(el => {
+    const divEl = document.createElement('div');
+    divEl.className = 'gallery__item';
+    const linkEl = document.createElement('a');
+    linkEl.className = 'gallery__link';
+    linkEl.href = el.original;
+    const imgEl = document.createElement('img');
+    imgEl.className = 'gallery__image';
+    imgEl.src = el.preview;
+    imgEl.alt = el.description;
+    imgEl.setAttribute('data-source', el.original);
 
-// galleryEl.insertAdjacentElement('afterbegin', newGallery);
+    divEl.append(linkEl);
+    linkEl.append(imgEl);
+    arr.push(divEl);
+});
+
+galleryEl.append(...arr);
+
+galleryEl.addEventListener('click', event => {
+    event.preventDefault();
+    if (event.target.nodeName !== 'IMG') {
+        return ;
+    }
+
+    const selectImg = event.target.dataset.source;
+})
