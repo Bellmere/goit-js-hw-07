@@ -34,23 +34,14 @@ function onClickGalleryImg(e) {
         return;
     }
     const selectImg = e.target.dataset.source;
-    console.log(selectImg);
-    return selectImg;
+
+    const instance = basicLightbox.create(`
+        <img src='${selectImg}' width='800' height='600'>
+    `);
+
+    instance.show();
+
 }
-
-import * as basicLightbox from 'basiclightbox'
-
-const instance = basicLightbox.create(`
-    <div class="modal">
-        <p>
-            Your first lightbox with just a few lines of code.
-            Yes, it's really that simple.
-        </p>
-    </div>
-`)
-
-instance.show()
-
 
 
 
