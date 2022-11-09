@@ -26,7 +26,13 @@ function createElement(gallery) {
 
 var lightbox = new SimpleLightbox('.gallery a', {
      /* options */ 
-     captionDelay: 300,
-     animationSpeed: 300,
+     captions: true,
+     captionType: 'alt',
+     captionDelay: 250,
+     preloading: true,
+     captionPosition: 'bottom',
+     captionsData: title,
+
+     
 
     });
