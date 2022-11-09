@@ -11,7 +11,7 @@ galleryEl.addEventListener('click', onClickGalleryImg);
 
 
 function createElement(gallery) {
-    return gallery.map(({ preview, original, destription }) => {
+    return gallery.map(({ preview, original, description }) => {
         return `
             <div class="gallery__item">
             <a class="gallery__link" 
@@ -20,7 +20,7 @@ function createElement(gallery) {
             class="gallery__image"
             src="${preview}"
             data-source="${original}"
-            alt="${destription}"
+            alt="${description}"
             />
             </a>
             </div>
